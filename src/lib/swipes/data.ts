@@ -1,0 +1,137 @@
+import type { SwipeItem } from "@/types";
+
+export const SWIPE_ITEMS: SwipeItem[] = [
+  {
+    id: "title-1",
+    category: "titles",
+    title: "Benefit + Keyword Formula",
+    formula: "[Benefit] for [Audience] | [Brand]",
+    content: "Ship SEO content 10x faster for SaaS founders | LaunchOS",
+    tags: ["saas", "benefit", "homepage"],
+  },
+  {
+    id: "title-2",
+    category: "titles",
+    title: "Problem → Solution",
+    formula: "Stop [Pain]. Start [Outcome].",
+    content: "Stop guessing meta tags. Start ranking your landing page.",
+    tags: ["conversion", "landing"],
+  },
+  {
+    id: "title-3",
+    category: "titles",
+    title: "Number + Outcome",
+    formula: "[N] ways to [Outcome] without [Pain]",
+    content: "7 ways to grow SaaS traffic without hiring an SEO agency",
+    tags: ["listicle", "blog"],
+  },
+  {
+    id: "meta-1",
+    category: "meta",
+    title: "Action + Value + CTA",
+    formula: "[Verb] [product] to [outcome]. [Proof]. [CTA].",
+    content:
+      "Generate startup-ready SEO copy in seconds. Built for founders who ship fast. Try LaunchOS free →",
+    tags: ["meta", "cta"],
+  },
+  {
+    id: "meta-2",
+    category: "meta",
+    title: "Comparison Meta",
+    formula: "Compare [A] vs [B]. See pricing, features & which fits [audience].",
+    content:
+      "Compare Notion vs Coda for startup teams. See pricing, features & which fits remote founders.",
+    tags: ["comparison", "programmatic"],
+  },
+  {
+    id: "comp-1",
+    category: "comparisons",
+    title: "X vs Y Page",
+    formula: "[Product A] vs [Product B]: Which is better for [use case]?",
+    content: "Linear vs Jira: Which is better for lean startup engineering teams?",
+    tags: ["vs", "comparison"],
+  },
+  {
+    id: "comp-2",
+    category: "comparisons",
+    title: "Alternative Page",
+    formula: "Best [Product] alternatives for [audience] in [year]",
+    content: "Best Ahrefs alternatives for indie SaaS founders in 2026",
+    tags: ["alternatives", "listicle"],
+  },
+  {
+    id: "struct-1",
+    category: "structures",
+    title: "SaaS Landing SEO Structure",
+    formula: "Hero → Social Proof → Problem → Solution → Features → FAQ → CTA",
+    content:
+      "1. H1 with primary keyword\n2. Subhead with outcome\n3. Logo bar\n4. Problem section (H2)\n5. Solution + demo\n6. Feature blocks (H2 each)\n7. FAQ schema\n8. Final CTA",
+    tags: ["landing", "structure"],
+  },
+  {
+    id: "struct-2",
+    category: "structures",
+    title: "Integration Page Structure",
+    formula: "What it does → Setup → Use cases → Benefits → CTA",
+    content:
+      "H1: [Product] + [Integration] integration\nIntro: one-line value\nSetup steps (3-5)\nUse cases for startups\nBenefits bullets\nCTA to connect",
+    tags: ["integration", "programmatic"],
+  },
+  {
+    id: "cta-1",
+    category: "ctas",
+    title: "Founder CTA",
+    formula: "Start [verb]ing [outcome] — free",
+    content: "Start ranking — free for 14 days",
+    tags: ["cta", "trial"],
+  },
+  {
+    id: "cta-2",
+    category: "ctas",
+    title: "Low-friction CTA",
+    formula: "See [outcome] in [time]",
+    content: "See your SEO blueprint in 30 seconds",
+    tags: ["cta", "demo"],
+  },
+  {
+    id: "cta-3",
+    category: "ctas",
+    title: "Builder CTA",
+    formula: "Built for [audience]. [Action].",
+    content: "Built for founders who ship. Generate your first page →",
+    tags: ["cta", "saas"],
+  },
+  {
+    id: "title-4",
+    category: "titles",
+    title: "AI Startup Angle",
+    formula: "The [category] OS for [audience]",
+    content: "The SEO operating system for AI startups",
+    tags: ["ai", "positioning"],
+  },
+  {
+    id: "meta-3",
+    category: "meta",
+    title: "Feature Page Meta",
+    formula: "[Feature] for [audience] — [Brand]",
+    content: "Programmatic SEO generator for SaaS — LaunchOS",
+    tags: ["feature", "meta"],
+  },
+  {
+    id: "comp-3",
+    category: "comparisons",
+    title: "Use Case Page",
+    formula: "[Product] for [persona]: [Outcome]",
+    content: "LaunchOS for indie hackers: rank without an SEO team",
+    tags: ["use-case", "persona"],
+  },
+];
+
+export const SWIPE_CATEGORIES = [
+  { id: "all", label: "All" },
+  { id: "titles", label: "Title Formulas" },
+  { id: "meta", label: "Meta Descriptions" },
+  { id: "comparisons", label: "Comparisons" },
+  { id: "structures", label: "Page Structures" },
+  { id: "ctas", label: "CTAs" },
+] as const;

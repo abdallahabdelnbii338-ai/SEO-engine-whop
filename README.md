@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LaunchOS — SEO Engine
 
-## Getting Started
+AI-powered SEO operating system for SaaS founders, indie hackers, and AI startups.
 
-First, run the development server:
+**SEO for founders who hate SEO.**
+
+## Stack
+
+- **Next.js 15+** App Router
+- **TypeScript** + **Tailwind CSS**
+- **Shadcn-style UI** (Radix primitives)
+- **Framer Motion**
+- **Clerk** Authentication
+- **Supabase** PostgreSQL + **Prisma** ORM
+- **Gemini 2.0 Flash** for AI generation
+
+## Features
+
+- SEO Dashboard with scores & activity
+- Landing Page SEO Generator
+- Programmatic SEO Generator
+- SaaS Blog Generator (TOFU/MOFU/BOFU)
+- Metadata Generator
+- Keyword Engine
+- SEO Swipe Vault
+- Saved Projects
+
+## Quick Start
+
+### 1. Clone & install
+
+```bash
+cd launchos
+npm install
+```
+
+### 2. Environment variables
+
+Copy `.env.example` to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in:
+
+| Variable | Source |
+|----------|--------|
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | [Clerk Dashboard](https://dashboard.clerk.com) |
+| `CLERK_SECRET_KEY` | Clerk Dashboard |
+| `DATABASE_URL` | Supabase → Settings → Database (pooler URL) |
+| `DIRECT_URL` | Supabase → Direct connection URL |
+| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com) |
+
+### 3. Database setup
+
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+### 4. Run dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Repository: [github.com/abdallahabdelnbii338-ai/SEO-engine-whop](https://github.com/abdallahabdelnbii338-ai/SEO-engine-whop)
 
-## Learn More
+1. Go to [vercel.com/new](https://vercel.com/new) and import **SEO-engine-whop**.
+2. Set **Root Directory** to `.` (repo root is the Next.js app).
+3. Framework preset: **Next.js** (default). Build command: `npm run build`.
+4. Add environment variables from `.env.example` (same values as your local `.env.local`).
+5. Deploy.
 
-To learn more about Next.js, take a look at the following resources:
+After the first deploy, run against production Supabase:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run db:push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+(Use your production `DATABASE_URL` / `DIRECT_URL` locally, or run `prisma db push` from Vercel with env vars loaded.)
 
-## Deploy on Vercel
+**Clerk:** In the Clerk dashboard, add your Vercel URL to allowed origins and redirect URLs (e.g. `https://your-app.vercel.app`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── (dashboard)/dashboard/   # Protected app routes
+│   ├── api/                     # API routes
+│   ├── sign-in/ sign-up/        # Clerk auth
+│   └── page.tsx                 # Marketing landing
+├── components/
+│   ├── ui/                      # Design system
+│   ├── marketing/               # Landing page
+│   ├── layout/                  # Sidebar, headers
+│   └── tools/                   # Generators & outputs
+├── lib/
+│   ├── ai/                      # Gemini + prompts
+│   ├── swipes/                  # Swipe vault data
+│   └── prisma.ts
+└── types/
+```
+
+LaunchOS is **free to use** — no paid tiers or upgrade flows in the product.
+
+## License
+
+MIT
