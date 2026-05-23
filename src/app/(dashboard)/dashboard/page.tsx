@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import {
   FileText,
   Layers,
@@ -59,7 +60,7 @@ const quickActions: {
 
 export default async function DashboardPage() {
   const authUser = await getAuthUser();
-  if (!authUser) return null;
+  if (!authUser) redirect("/sign-in");
 
   const data = await getDashboardData(authUser.id);
   const isEmpty =

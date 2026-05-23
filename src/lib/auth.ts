@@ -3,7 +3,13 @@ import { isDatabaseConfigured } from "@/lib/db-config";
 import { ensureUser } from "@/lib/prisma";
 
 export async function getAuthUser() {
-  const { userId } = await auth();
+  let userId: string | null = null;
+  try {
+    ({ userId } = await auth());
+  } catch (error) {
+    console.error("Clerk auth() failed:", error);
+    return null;
+  }
   if (!userId) return null;
 
   const user = await currentUser();
