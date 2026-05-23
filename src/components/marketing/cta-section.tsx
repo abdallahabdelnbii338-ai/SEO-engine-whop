@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthActions } from "@/components/marketing/clerk-auth-actions";
+import { AuthActions } from "@/components/marketing/auth-actions";
 
 export function CTASection() {
   return (

@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
 import {
   FileText,
   Layers,
@@ -75,28 +73,14 @@ const quickActions: {
 ];
 
 export function DashboardOverview() {
-  const { isLoaded, isSignedIn } = useAuth();
-  const router = useRouter();
   const [data, setData] = useState<OverviewData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isLoaded && !isSignedIn) {
-      router.replace("/sign-in");
-    }
-  }, [isLoaded, isSignedIn, router]);
-
-  useEffect(() => {
-    if (!isLoaded || !isSignedIn) return;
-
     let cancelled = false;
     (async () => {
       try {
         const res = await fetch("/api/dashboard/overview");
-        if (res.status === 401) {
-          router.replace("/sign-in");
-          return;
-        }
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
           throw new Error(body.error ?? "Failed to load workspace");
@@ -113,11 +97,7 @@ export function DashboardOverview() {
     return () => {
       cancelled = true;
     };
-  }, [isLoaded, isSignedIn, router]);
-
-  if (!isLoaded || !isSignedIn) {
-    return <LoadingState message="Loading workspace…" />;
-  }
+  }, []);
 
   if (error) {
     return (

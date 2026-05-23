@@ -35,7 +35,7 @@ export function requirePrisma(): PrismaClient {
 }
 
 export async function ensureUser(
-  clerkId: string,
+  userId: string,
   email?: string | null,
   name?: string | null
 ) {
@@ -44,8 +44,8 @@ export async function ensureUser(
 
   try {
     return await client.user.upsert({
-      where: { id: clerkId },
-      create: { id: clerkId, email: email ?? undefined, name: name ?? undefined },
+      where: { id: userId },
+      create: { id: userId, email: email ?? undefined, name: name ?? undefined },
       update: {
         email: email ?? undefined,
         name: name ?? undefined,

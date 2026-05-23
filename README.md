@@ -10,8 +10,8 @@ AI-powered SEO operating system for SaaS founders, indie hackers, and AI startup
 - **TypeScript** + **Tailwind CSS**
 - **Shadcn-style UI** (Radix primitives)
 - **Framer Motion**
-- **Clerk** Authentication
 - **Supabase** PostgreSQL + **Prisma** ORM
+- **Whop embed** (CSP `frame-ancestors`; auth gated by Whop for MVP)
 - **Gemini 2.0 Flash** for AI generation
 
 ## Features
@@ -46,8 +46,6 @@ Fill in:
 
 | Variable | Source |
 |----------|--------|
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | [Clerk Dashboard](https://dashboard.clerk.com) |
-| `CLERK_SECRET_KEY` | Clerk Dashboard |
 | `DATABASE_URL` | Supabase → Settings → Database (pooler URL) |
 | `DIRECT_URL` | Supabase → Direct connection URL |
 | `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com) |

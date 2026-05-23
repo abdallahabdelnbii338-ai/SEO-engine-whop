@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
-import { ClerkSetupBanner } from "@/components/shared/clerk-setup-banner";
-import { clerkPublishableKey, isClerkConfigured } from "@/lib/clerk-config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,10 +35,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const shell = (
+  return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark`}>
       <body className="min-h-screen antialiased bg-zinc-950 text-zinc-50">
-        <ClerkSetupBanner />
         {children}
         <Toaster
           theme="dark"
@@ -56,11 +52,5 @@ export default function RootLayout({
         />
       </body>
     </html>
-  );
-
-  if (!isClerkConfigured) return shell;
-
-  return (
-    <ClerkProvider publishableKey={clerkPublishableKey}>{shell}</ClerkProvider>
   );
 }

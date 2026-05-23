@@ -1,5 +1,12 @@
 import type { NextConfig } from "next";
 
+/** Allow Whop Website Embed (iframe). CSP frame-ancestors overrides X-Frame-Options in modern browsers. */
+const frameAncestors = [
+  "'self'",
+  "https://whop.com",
+  "https://*.whop.com",
+].join(" ");
+
 const nextConfig: NextConfig = {
   async headers() {
     return [
@@ -8,7 +15,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://whop.com;",
+            value: `frame-ancestors ${frameAncestors};`,
           },
         ],
       },
