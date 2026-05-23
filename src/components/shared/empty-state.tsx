@@ -10,11 +10,12 @@ interface EmptyStateProps {
   actionLabel?: string;
   actionHref?: string;
   className?: string;
-  accent?: "blue" | "indigo" | "emerald" | "violet";
+  accent?: "blue" | "sky" | "indigo" | "emerald" | "violet";
 }
 
 const accentStyles = {
   blue: "border-blue-500/15 bg-blue-500/[0.03] [&_svg]:text-blue-400/70",
+  sky: "border-sky-500/15 bg-sky-500/[0.03] [&_svg]:text-sky-400/70",
   indigo: "border-indigo-500/15 bg-indigo-500/[0.03] [&_svg]:text-indigo-400/70",
   emerald: "border-emerald-500/15 bg-emerald-500/[0.03] [&_svg]:text-emerald-400/70",
   violet: "border-violet-500/15 bg-violet-500/[0.03] [&_svg]:text-violet-400/70",
@@ -22,6 +23,7 @@ const accentStyles = {
 
 const iconBoxStyles = {
   blue: "border-blue-500/20 bg-blue-500/10",
+  sky: "border-sky-500/20 bg-sky-500/10",
   indigo: "border-indigo-500/20 bg-indigo-500/10",
   emerald: "border-emerald-500/20 bg-emerald-500/10",
   violet: "border-violet-500/20 bg-violet-500/10",

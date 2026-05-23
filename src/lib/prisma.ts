@@ -5,12 +5,7 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-function createPrismaClient(): PrismaClient | null {
-  if (!isDatabaseConfigured()) {
-    globalForPrisma.prisma = undefined;
-    return null;
-  }
-
+function createPrismaClient(): PrismaClient {
   return new PrismaClient({
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
   });
@@ -26,7 +21,7 @@ function getPrisma(): PrismaClient | null {
     globalForPrisma.prisma = createPrismaClient();
   }
 
-  return globalForPrisma.prisma ?? null;
+  return globalForPrisma.prisma;
 }
 
 export const prisma = getPrisma();
