@@ -14,6 +14,7 @@ const schema = z.object({
 
 export async function POST(req: Request) {
   const authUser = await getAuthUser();
+  if (!authUser) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   try {
     const input = schema.parse(await req.json());

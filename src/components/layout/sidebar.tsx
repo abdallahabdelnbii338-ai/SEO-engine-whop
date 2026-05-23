@@ -69,10 +69,10 @@ export function Sidebar() {
       </nav>
 
       <div className="border-t border-zinc-800/80 p-3 flex items-center gap-2.5">
-        <div className="h-8 w-8 rounded-full border border-zinc-800 bg-zinc-900 flex items-center justify-center">
-          <span className="text-[10px] font-medium text-blue-300/80">LO</span>
+        <div className="h-8 w-8 rounded-full border border-zinc-800 bg-zinc-900 flex items-center justify-center text-[10px] text-zinc-500">
+          LO
         </div>
-        <p className="text-[11px] text-emerald-500/70 truncate">SEO workspace</p>
+        <p className="text-[11px] text-emerald-500/70 truncate">Free · Founder workspace</p>
       </div>
     </aside>
   );

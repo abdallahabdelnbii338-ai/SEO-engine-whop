@@ -11,7 +11,6 @@ AI-powered SEO operating system for SaaS founders, indie hackers, and AI startup
 - **Shadcn-style UI** (Radix primitives)
 - **Framer Motion**
 - **Supabase** PostgreSQL + **Prisma** ORM
-- **Whop embed** (CSP `frame-ancestors`; auth gated by Whop for MVP)
 - **Gemini 2.0 Flash** for AI generation
 
 ## Features
@@ -83,8 +82,6 @@ npm run db:push
 
 (Use your production `DATABASE_URL` / `DIRECT_URL` locally, or run `prisma db push` from Vercel with env vars loaded.)
 
-**Clerk:** In the Clerk dashboard, add your Vercel URL to allowed origins and redirect URLs (e.g. `https://your-app.vercel.app`).
-
 ## Project Structure
 
 ```
@@ -92,7 +89,7 @@ src/
 ├── app/
 │   ├── (dashboard)/dashboard/   # Protected app routes
 │   ├── api/                     # API routes
-│   ├── sign-in/ sign-up/        # Clerk auth
+│   ├── sign-in/ sign-up/        # Redirect to dashboard
 │   └── page.tsx                 # Marketing landing
 ├── components/
 │   ├── ui/                      # Design system

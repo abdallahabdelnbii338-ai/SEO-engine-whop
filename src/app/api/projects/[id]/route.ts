@@ -7,6 +7,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const authUser = await getAuthUser();
+  if (!authUser) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const db = getDb();
   if (!db) return databaseUnavailableResponse();

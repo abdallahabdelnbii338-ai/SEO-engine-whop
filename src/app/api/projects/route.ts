@@ -10,6 +10,7 @@ const createSchema = z.object({
 
 export async function GET() {
   const authUser = await getAuthUser();
+  if (!authUser) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const db = getDb();
   if (!db) return databaseUnavailableResponse();
@@ -27,6 +28,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const authUser = await getAuthUser();
+  if (!authUser) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const db = getDb();
   if (!db) return databaseUnavailableResponse();
