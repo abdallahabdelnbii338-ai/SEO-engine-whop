@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { isDatabaseConfigured } from "@/lib/db-config";
 import { ensureUser } from "@/lib/prisma";
 
@@ -12,19 +12,13 @@ export async function getAuthUser() {
   }
   if (!userId) return null;
 
-  const user = await currentUser();
-
   if (isDatabaseConfigured()) {
     try {
-      await ensureUser(
-        userId,
-        user?.emailAddresses[0]?.emailAddress,
-        user?.firstName ? `${user.firstName} ${user.lastName ?? ""}`.trim() : user?.username
-      );
+      await ensureUser(userId);
     } catch (error) {
       console.error("ensureUser failed:", error);
     }
   }
 
-  return { id: userId, user };
+  return { id: userId };
 }

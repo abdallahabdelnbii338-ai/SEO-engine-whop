@@ -2,17 +2,21 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { isClerkConfigured } from "@/lib/clerk-config";
 
-const isDashboardRoute = createRouteMatcher(["/dashboard(.*)"]);
+const isProtectedRoute = createRouteMatcher([
+  "/dashboard",
+  "/dashboard/(.*)",
+  "/api/(.*)",
+]);
 
 export default isClerkConfigured
   ? clerkMiddleware(async (auth, req) => {
-      if (isDashboardRoute(req)) {
+      if (isProtectedRoute(req)) {
         await auth.protect();
       }
     })
   : () => NextResponse.next();
 
-// Only dashboard + API — keep "/" public to avoid Next 16 + Vercel sitewide 404
+// Match /dashboard exactly and nested paths; keep "/" out to avoid Vercel sitewide 404
 export const config = {
-  matcher: ["/dashboard/:path*", "/api/:path*"],
+  matcher: ["/dashboard", "/dashboard/:path*", "/api/:path*"],
 };
